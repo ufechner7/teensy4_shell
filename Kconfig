@@ -1,0 +1,14 @@
+# Copyright (c) 2019 Nordic Semiconductor ASA
+# SPDX-License-Identifier: Apache-2.0
+
+config USB_DEVICE_PID
+	default USB_PID_CONSOLE_SAMPLE
+
+config LOG_BACKEND_UART
+    bool "Enable UART backend"
+    default y if !SHELL_BACKEND_SERIAL
+    depends on UART_CONSOLE && !LOG_MINIMAL && LOG
+    help
+      When enabled backend is using UART to output logs.
+
+source "Kconfig.zephyr"

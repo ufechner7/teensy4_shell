@@ -1,0 +1,20 @@
+/*
+ * Copyright (c) 2020, Bernhard Kraemer
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+
+/ {
+    aliases {
+            toggle = &toggle_gpio;
+        };
+
+    app-gpios {
+      compatible = "gpio-keys";
+      toggle_gpio: toggle-gpio {
+        gpios = <&gpio1 21 GPIO_ACTIVE_HIGH>;
+        label = "Toggle Pin 41";
+      };
+    };
+};

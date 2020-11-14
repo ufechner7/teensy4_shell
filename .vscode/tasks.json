@@ -1,0 +1,58 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Teensy4.0",
+            "type": "shell",
+            "command": "west build -p always -b teensy41",
+            "problemMatcher": [],
+            "options": {
+                "env": {
+                    "ZEPHYR_TOOLCHAIN_VARIANT": "gnuarmemb",
+                    "GNUARMEMB_TOOLCHAIN_PATH": "/usr/local/gcc_arm/gcc-arm-none-eabi-7-2017-q4-major"
+                }
+            },
+            "presentation": {
+                "clear": true,
+                "panel": "shared", 
+                "echo": false
+            }
+        },
+        {
+            "label": "Flash Teensy4.0",
+            "type": "shell",
+            "command": "teensy_loader_cli --mcu=TEENSY41 -v -w build/zephyr/zephyr.hex",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Build Teensy4.0"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true,
+                "echo": false
+            }
+        },
+        {
+            "label": "Console Teensy4.0",
+            "type": "shell",
+            "command": "usbterm 2fe3 0004",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Flash Teensy4.0"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true,
+                "echo": false
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
