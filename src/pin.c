@@ -38,7 +38,7 @@
 void pin_main_f();
 
 /*** Macros *************************************************************************/
-LOG_MODULE_REGISTER(LOG_MODULE_NAME, LOG_LEVEL_DBG);
+LOG_MODULE_REGISTER(LOG_MODULE_NAME, LOG_LEVEL_INF);
 
 K_THREAD_DEFINE(pin_id, STACK_SIZE, pin_main_f, NULL, NULL, NULL,
                 PRIORITY, 0, START_DELAY);

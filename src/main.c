@@ -46,8 +46,9 @@ void main(void)
 		return;
 	}
 
-	/* sleep some time after boot to give USB-Client a chance to connect 
-	   before first log output is produced */
+	/* Sleep some time after boot to give USB-Client a chance to connect 
+	 * before first log output is produced. 
+	 */
 	k_msleep(START_DELAY);
 
 	LOG_INF("Started zephyr %u.%u.%u on board %s.", SYS_KERNEL_VER_MAJOR(version), SYS_KERNEL_VER_MINOR(version), SYS_KERNEL_VER_PATCHLEVEL(version), CONFIG_BOARD);

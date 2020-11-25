@@ -6,8 +6,9 @@
 
 
 / {
-    aliases {
+  aliases {
             toggle = &toggle_gpio;
+            sw0 = &button0;
         };
 
     app-gpios {
@@ -16,5 +17,14 @@
         gpios = <&gpio1 21 GPIO_ACTIVE_HIGH>;
         label = "Toggle Pin 41";
       };
+      button0: button_0 {
+        gpios = < &gpio1 25 GPIO_ACTIVE_LOW >;
+        label = "Push button switch 0 at Pin 23";
+      };
     };
+};
+
+&lpuart4 {
+  status = "okay";
+  current-speed = < 115200 >;
 };
