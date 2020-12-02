@@ -49,8 +49,7 @@ void uart_main_f()
     const struct device *uart;
 
     uart = device_get_binding(UART_DEV);
-    if (uart == NULL)
-    {
+    if (uart == NULL) {
         LOG_ERR("Device binding is NULL");
         return;
     }
@@ -74,8 +73,7 @@ void uart_main_f()
 
     LOG_INF("Thread started");
     
-    while (true)
-    {
+    while (true) {
         /* get a data item */
         k_msgq_get(&data_message_q, &tx_msg, K_FOREVER);
         tx_done=false;

@@ -60,15 +60,13 @@ void button_main_f()
     bool newState = 0;
 
     button = device_get_binding(SW0_GPIO_LABEL);
-    if (button == NULL)
-    {
+    if (button == NULL) {
         LOG_ERR("Error: didn't find %s device", SW0_GPIO_LABEL);
         return;
     }
 
     ret = gpio_pin_configure(button, SW0_GPIO_PIN, SW0_GPIO_FLAGS);
-    if (ret != 0)
-    {
+    if (ret != 0) {
         LOG_ERR("Error %d: failed to configure %s pin %d, flags %u",
                ret, SW0_GPIO_LABEL, SW0_GPIO_PIN, SW0_GPIO_FLAGS);
         return;
@@ -76,11 +74,9 @@ void button_main_f()
 
     LOG_INF("Set up button at %s pin %d", SW0_GPIO_LABEL, SW0_GPIO_PIN);
 
-    while(true)
-    {
+    while(true) {
         newState = gpio_pin_get(button, SW0_GPIO_PIN); 
-        if (newState != currentState)
-        {
+        if (newState != currentState) {
             LOG_DBG("Button state is now %u", newState);
             currentState = newState;
 
@@ -90,14 +86,12 @@ void button_main_f()
             memcpy(msg.data, (uint8_t *)s, strlen(s));
             msg.length = strlen(s);
 
-            while (k_msgq_put(&data_message_q, &msg, K_NO_WAIT) != 0) 
-            {
+            while (k_msgq_put(&data_message_q, &msg, K_NO_WAIT) != 0) {
                 /* message queue is full: purge old data & try again */
                 k_msgq_purge(&data_message_q);
                 LOG_ERR("Data message queue is full -- purge");
             }
         }
-
         k_msleep(SLEEP_TIME_MS);
     }
 }

@@ -30,10 +30,6 @@
 #define LED0_GPIO_PIN DT_GPIO_PIN(LED0_NODE, gpios)
 #define LED0_GPIO_FLAGS DT_GPIO_FLAGS(LED0_NODE, gpios)
 
-/*** Types **************************************************************************/
-
-/*** Variables **********************************************************************/
-
 /*** Function Prototypes ************************************************************/
 void led_main_f();
 
@@ -51,22 +47,19 @@ void led_main_f()
     const struct device *dev;
 
     dev = device_get_binding(LED0_GPIO_LABEL);
-    if (dev == NULL)
-    {
+    if (dev == NULL) {
         LOG_ERR("Device binding is NULL");
         return;
     }
 
-    if (gpio_pin_configure(dev, LED0_GPIO_PIN, GPIO_OUTPUT_ACTIVE | LED0_GPIO_FLAGS))
-    {
+    if (gpio_pin_configure(dev, LED0_GPIO_PIN, GPIO_OUTPUT_ACTIVE | LED0_GPIO_FLAGS)) {
         LOG_ERR("GPIO configuration failed");
         return;
     }
 
     LOG_INF("Thread started");
 
-    while (true)
-    {
+    while (true) {
         gpio_pin_set(dev, LED0_GPIO_PIN, (int)led_is_on);
 
         LOG_DBG("LED state changed: %u", (int)led_is_on);

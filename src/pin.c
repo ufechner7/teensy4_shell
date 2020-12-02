@@ -47,22 +47,19 @@ void pin_main_f()
     bool pin_is_on = true;
 
     dev = device_get_binding(TOGGLE_GPIO_LABEL);
-    if (dev == NULL)
-    {
+    if (dev == NULL) {
         LOG_ERR("Device binding is NULL");
         return;
     }
 
-    if (gpio_pin_configure(dev, TOGGLE_GPIO_PIN, GPIO_OUTPUT_ACTIVE | TOGGLE_GPIO_FLAGS))
-    {
+    if (gpio_pin_configure(dev, TOGGLE_GPIO_PIN, GPIO_OUTPUT_ACTIVE | TOGGLE_GPIO_FLAGS)) {
         LOG_ERR("GPIO configuration failed");
         return;
     }
 
     LOG_INF("Thread started");
 
-    while (1)
-    {
+    while (true) {
         gpio_pin_set(dev, TOGGLE_GPIO_PIN, (int)pin_is_on);
 
         LOG_DBG("PIN state changed: %u", (int)pin_is_on);
