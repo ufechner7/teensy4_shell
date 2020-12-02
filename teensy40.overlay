@@ -9,7 +9,7 @@
     aliases {
             toggle = &toggle_gpio;
             sw0 = &button0;
-        };
+    };
         
     app-gpios {
       compatible = "gpio-keys";
@@ -21,7 +21,7 @@
         gpios = < &gpio1 25 GPIO_ACTIVE_LOW >;
         label = "Push button switch 0 at Pin 23";
       };
-    };
+  };
 };
 
 &lpuart4 {
