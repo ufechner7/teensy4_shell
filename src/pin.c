@@ -30,10 +30,6 @@
 #define TOGGLE_GPIO_PIN DT_GPIO_PIN(TOGGLE_NODE, gpios)
 #define TOGGLE_GPIO_FLAGS DT_GPIO_FLAGS(TOGGLE_NODE, gpios)
 
-/*** Types **************************************************************************/
-
-/*** Variables **********************************************************************/
-
 /*** Function Prototypes ************************************************************/
 void pin_main_f();
 

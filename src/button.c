@@ -18,6 +18,7 @@
 
 #include "stdio.h"
 #include "string.h"
+
 /*** Constants **********************************************************************/
 #define LOG_MODULE_NAME but
 
@@ -37,10 +38,6 @@
 #define SW0_GPIO_LABEL DT_GPIO_LABEL(SW0_NODE, gpios)
 #define SW0_GPIO_PIN DT_GPIO_PIN(SW0_NODE, gpios)
 #define SW0_GPIO_FLAGS (GPIO_INT_DEBOUNCE | GPIO_INPUT | DT_GPIO_FLAGS(SW0_NODE, gpios))
-
-/*** Types **************************************************************************/
-
-/*** Variables **********************************************************************/
 
 /*** Function Prototypes ************************************************************/
 void button_main_f();
@@ -79,7 +76,7 @@ void button_main_f()
 
     LOG_INF("Set up button at %s pin %d", SW0_GPIO_LABEL, SW0_GPIO_PIN);
 
-    while(1)
+    while(true)
     {
         newState = gpio_pin_get(button, SW0_GPIO_PIN); 
         if (newState != currentState)

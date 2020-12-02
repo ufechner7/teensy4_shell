@@ -74,7 +74,7 @@ void uart_main_f()
 
     LOG_INF("Thread started");
     
-    while (1)
+    while (true)
     {
         /* get a data item */
         k_msgq_get(&data_message_q, &tx_msg, K_FOREVER);

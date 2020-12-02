@@ -65,7 +65,7 @@ void led_main_f()
 
     LOG_INF("Thread started");
 
-    while (1)
+    while (true)
     {
         gpio_pin_set(dev, LED0_GPIO_PIN, (int)led_is_on);
 
