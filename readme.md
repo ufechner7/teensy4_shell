@@ -7,6 +7,43 @@ Every thread has a start delay of 500ms. This ensures that the device is properl
 ## Preparation
 This tutorial was tested on Ubuntu 18.04. 
 ### Install Zephyr 2.4 at the default location
+#### Update OS ####
+```
+sudo apt update
+sudo apt upgrade
+```
+#### Install dependencies ####
+```
+sudo apt install --no-install-recommends git cmake ninja-build gperf \
+  ccache dfu-util device-trcpupower frequency-set --governor performanceee-compiler wget \
+  python3-dev python3-pip python3-setuptools python3-tk python3-wheel xz-utils file \
+  make gcc gcc-multilib g++-multilib libsdl2-dev
+```
+#### Install cmake 3.13.1 or higher ####
+```
+wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | sudo apt-key add -
+sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
+sudo apt install cmake
+```
+#### Install Python dependencies ####
+```
+pip3 install --user -U west
+echo 'export PATH=~/.local/bin:"$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+#### Create Zephyr project and checkout version 2.4 ####
+```
+west init ~/zephyrproject
+cd ~/zephyrproject
+west update
+cd zephyr
+git checkout v2.4-branch
+```
+#### Install additional requirements ####
+```
+pip3 install --user -r ~/zephyrproject/zephyr/scripts/requirements.txt
+```
+### Install toolchain
 
 ### Check out the board definition of Teensy 4.0
 
