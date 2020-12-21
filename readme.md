@@ -55,7 +55,6 @@ chmod +x zephyr-sdk-0.11.4-setup.run
 sudo cp ~/zephyr-sdk-0.11.4/sysroots/x86_64-pokysdk-linux/usr/share/openocd/contrib/60-openocd.rules /etc/udev/rules.d
 sudo udevadm control --reload
 ```
-
 ### Check out the board definition of Teensy 4.0
 ```
 cd ~
@@ -67,8 +66,12 @@ git checkout teensy4-branch
 cd ~/zephyrproject/zephyr/boards/arm/
 ln -s ~/repos/zephyr/boards/arm/teensy4
 ```
-
 ### Check out this sample program
+```
+cd ~/repos
+git clone https://github.com/ufechner7/zephyr_teensy4_test.git
+cd zephyr_teensy4_test/
+```
 
 ## Building this example
 1. source the script zephyr-env.sh
