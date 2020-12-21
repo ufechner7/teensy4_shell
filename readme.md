@@ -57,6 +57,16 @@ sudo udevadm control --reload
 ```
 
 ### Check out the board definition of Teensy 4.0
+```
+cd ~
+mkdir repos
+cd repos
+git clone https://github.com/bdkrae/zephyr.git
+cd zephyr
+git checkout teensy4-branch
+cd ~/zephyrproject/zephyr/boards/arm/
+ln -s ~/repos/zephyr/boards/arm/teensy4
+```
 
 ### Check out this sample program
 
