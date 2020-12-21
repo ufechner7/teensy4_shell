@@ -44,6 +44,17 @@ git checkout v2.4-branch
 pip3 install --user -r ~/zephyrproject/zephyr/scripts/requirements.txt
 ```
 ### Install toolchain
+```
+cd ~
+wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.11.4/zephyr-sdk-0.11.4-setup.run
+chmod +x zephyr-sdk-0.11.4-setup.run
+./zephyr-sdk-0.11.4-setup.run -- -d ~/zephyr-sdk-0.11.4
+```
+### Install udev rules
+```
+sudo cp ~/zephyr-sdk-0.11.4/sysroots/x86_64-pokysdk-linux/usr/share/openocd/contrib/60-openocd.rules /etc/udev/rules.d
+sudo udevadm control --reload
+```
 
 ### Check out the board definition of Teensy 4.0
 
