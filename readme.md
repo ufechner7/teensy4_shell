@@ -80,6 +80,9 @@ cd zephyr_teensy4_test/
 2. execute the build script ```./build.sh```
 ## Programming the board
 ### Install the programming software 
+1. check out and compile teensy_loader_cli from https://github.com/PaulStoffregen/teensy_loader_cli
+2. create a symbolic link to teensy_loader_cli in /usr/local/bin
+3. install 49-teensy.rules in /etc/udev/rules.d (download them from http://www.pjrc.com/teensy/49-teensy.rules ) and reboot
 
 ### Program the board
 Execute the script ```./burn.sh```
