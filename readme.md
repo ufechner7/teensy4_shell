@@ -37,6 +37,10 @@ source ~/.bashrc
 west init ~/zephyrproject
 cd ~/zephyrproject
 west update
+```
+#### Optionally: checkout version 2.4 ####
+If you want to use the latest stable version of Zephyr instead of bleeding-edge, execute:
+```
 cd zephyr
 git checkout v2.4-branch
 ```
