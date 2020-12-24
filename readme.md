@@ -32,7 +32,7 @@ pip3 install --user -U west
 echo 'export PATH=~/.local/bin:"$PATH"' >> ~/.bashrc
 source ~/.bashrc
 ```
-#### Create Zephyr project and checkout version 2.4 ####
+#### Create Zephyr project and update the dependencies ####
 ```
 west init ~/zephyrproject
 cd ~/zephyrproject
