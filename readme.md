@@ -117,6 +117,8 @@ The script automatically launches the terminal program putty after flashing the 
 ## Standard Output
 Standard output is mapped to usb according to [usb/console](https://github.com/zephyrproject-rtos/zephyr/tree/master/samples/subsys/usb/console) example. This is done in ```main.c```. As described there the board will be detected as a CDC_ACM serial device. 
 
+Known limitation: In the moment the usb console cannot be used as input device.
+
 ## LED + toggle pin
 The led flashes continously to give an visual indication that application is running. Toggle pin is mapped to teensy pin 2 (Teensy 4.0).
 
@@ -125,3 +127,8 @@ On every edge the button pushes a string to a message queue which is then proces
 
 ## UART
 The uart always listens for incoming data and dumps it to the log. It also listens for data in the message queue, which are sent out immediately. Used uart is mapped to teens pins 7/8 (Rx2/TX2 in teensy numbering, lpuart4 in nxp numbering). Rx/Tx shorted externally.
+
+## Questions?
+In case you have problems to run the above mentioned examples, please create an issue in this repository.
+
+Uwe Fechner
