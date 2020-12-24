@@ -90,6 +90,19 @@ Execute the script ```./burn.sh```
 
 The script automatically launches the terminal program putty after flashing the board, so you can see the output.
 
+**Example output**
+```
+[00:00:00.357,000] <inf> usb_cdc_acm: Device configured
+[00:00:00.357,000] <wrn> usb_dc_mcux_ehci: endpoint 0x1 already occupied
+[00:00:00.420,000] <inf> sys: Started zephyr 2.4.0 on board teensy40.
+[00:00:00.500,000] <inf> uart: Thread started
+[00:00:00.500,000] <inf> but: Set up button at GPIO_1 pin 25
+[00:00:00.500,000] <inf> led: Thread started
+[00:00:00.500,000] <inf> pin: Thread started
+[00:00:07.754,000] <dbg> but.button_main_f: Button state is now 1
+[00:00:07.786,000] <dbg> but.button_main_f: Button state is now 0
+```
+
 ## Standard Output
 Standard output is mapped to usb according to [usb/console](https://github.com/zephyrproject-rtos/zephyr/tree/master/samples/subsys/usb/console) example. This is done in ```main.c```. As described there the board will be detected as a CDC_ACM serial device. 
 
