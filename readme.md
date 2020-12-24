@@ -85,6 +85,7 @@ cd zephyr_teensy4_test/
 3. install 49-teensy.rules in /etc/udev/rules.d (download them from http://www.pjrc.com/teensy/49-teensy.rules ) and reboot
 
 ### Program the board
+Connect Teensy 4.0 via USB. It must blink slowly. Press the button.
 Execute the script ```./burn.sh```
 
 The script automatically launches the terminal program putty after flashing the board, so you can see the output.
