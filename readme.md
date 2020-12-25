@@ -148,8 +148,8 @@ these names:
 | 2    | 12  |B0_12 | 32 | Backside |
 | 3    | -   |B1_00 | 8  | TX2 |
 | 3    | -   |B1_01 | 7  | RX2 |
-| 4    | 4   |EMC_04 | 2  |  |
-| 4    | 5   |EMC_05 | 3  |  |
+| 4    | 4   |EMC_04 | 2  | not working |
+| 4    | 5   |EMC_05 | 3  | not working |
 | 4    | 7   |EMC_07 | 33  | Backside |
 | 4    | 6   |EMC_06 | 4  |  |
 | 4    | 8   |EMC_08 | 5  |  |
