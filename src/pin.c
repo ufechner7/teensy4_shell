@@ -57,12 +57,14 @@ void pin_main_f()
         return;
     }
 
-    LOG_INF("Thread started");
+    LOG_INF("Pin thread started");
+    LOG_INF(TOGGLE_GPIO_LABEL);
+    LOG_INF("PIN %u", (int)TOGGLE_GPIO_PIN);
 
     while (true) {
         gpio_pin_set(dev, TOGGLE_GPIO_PIN, (int)pin_is_on);
 
-        LOG_DBG("PIN state changed: %u", (int)pin_is_on);
+        LOG_INF("PIN state changed: %u", (int)pin_is_on);
 
         pin_is_on = !pin_is_on;
 
