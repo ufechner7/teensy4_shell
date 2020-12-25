@@ -127,18 +127,18 @@ The names and pin numbers used by the Teensy documentation, the schematics/datas
 these names:
 | GPIO | PIN | Name    | Teensy PIN | Remark |
 |:----:|:---:|---------|:----------:|--------|
-| 0    | 2   |AD_B0_2  | 1          | |
-| 0    | 3   |AD_B0_3  | 0          | |
+| 0    | 2   |AD_B0_2  | 1          | TX1 |
+| 0    | 3   |AD_B0_3  | 0          | RX1 |
 | 0    | 12  |AD_B0_12 | 24 / A10   | Backside |
 | 0    | 13  |AD_B0_13 | 25 / A11   | Backside |
-| 1    | 0   |AD_B1_00 | 19 / A5    | |
-| 1    | 1   |AD_B1_01 | 18 / A4    | |
-| 1    | 2   |AD_B1_02 | 14 / A0    | |
-| 1    | 3   |AD_B1_03 | 15 / A1    | |
-| 1    | 6   |AD_B1_06 | 17 / A3    | |
-| 1    | 7   |AD_B1_07 | 16 / A2    | |
-| 1    | 8   |AD_B1_08 | 22 / A8    | |
-| 1    | 9   |AD_B1_09 | 23 / A9    | |
+| 1    | 0/16   |AD_B1_00 | 19 / A5    | |
+| 1    | 1/17   |AD_B1_01 | 18 / A4    | |
+| 1    | 2/18   |AD_B1_02 | 14 / A0    | |
+| 1    | 3/19   |AD_B1_03 | 15 / A1    | |
+| 1    | 6/22   |AD_B1_06 | 17 / A3    | |
+| 1    | 7/23   |AD_B1_07 | 16 / A2    | |
+| 1    | 8/24   |AD_B1_08 | 22 / A8    | |
+| 1    | 9/25   |AD_B1_09 | 23 / A9    | |
 | 1    | 14  |AD_B1_14 | 26 / A12   | Backside |
 | 1    | 15  |AD_B1_15 | 27 / A13   | Backside |
 | 2    | 0   |B0_00 | 10 | |
@@ -157,6 +157,8 @@ these names:
 | 4    | 32  |EMC_32 | 28  | Backside |
 | 4    | 36  |EMC_36 | 31  | Backside |
 | 4    | 37  |EMC_37 | 30  | Backside |
+
+If two PIN numbers are given, the second one works, the first one should work, but does not.
 
 ## Button
 On every edge the button pushes a string to a message queue which is then processed by the uart. Pushputton is mapped to teensy pin 23. An external pullup resistor must be used currently.
