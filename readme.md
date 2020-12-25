@@ -120,7 +120,43 @@ Standard output is mapped to usb according to [usb/console](https://github.com/z
 Known limitation: In the moment the usb console cannot be used as input device.
 
 ## LED + toggle pin
-The led flashes continously to give an visual indication that application is running. Toggle pin is mapped to teensy pin 2 (Teensy 4.0).
+The led flashes continously to give an visual indication that application is running. The toggle pin is mapped to teensy pin 2 (Teensy 4.0).
+
+## GPIO names
+The names and pin numbers used by the Teensy documentation, the schematics/datasheet and by the Zephyr driver are not consistant. Here a table to translate
+these names:
+| GPIO | PIN | Name    | Teensy PIN | Remark |
+|:----:|:---:|---------|:----------:|--------|
+| 0    | 2   |AD_B0_2  | 1          | |
+| 0    | 3   |AD_B0_3  | 0          | |
+| 0    | 12  |AD_B0_12 | 24 / A10   | Backside |
+| 0    | 13  |AD_B0_13 | 25 / A11   | Backside |
+| 1    | 0   |AD_B1_00 | 19 / A5    | |
+| 1    | 1   |AD_B1_01 | 18 / A4    | |
+| 1    | 2   |AD_B1_02 | 14 / A0    | |
+| 1    | 3   |AD_B1_03 | 15 / A1    | |
+| 1    | 6   |AD_B1_06 | 17 / A3    | |
+| 1    | 7   |AD_B1_07 | 16 / A2    | |
+| 1    | 8   |AD_B1_08 | 22 / A8    | |
+| 1    | 9   |AD_B1_09 | 23 / A9    | |
+| 1    | 14  |AD_B1_14 | 26 / A12   | Backside |
+| 1    | 15  |AD_B1_15 | 27 / A13   | Backside |
+| 2    | 0   |B0_00 | 10 | |
+| 2    | 1   |B0_01 | 12 | |
+| 2    | 2   |B0_02 | 11 | |
+| 2    | 11  |B0_11 | 9  | |
+| 2    | 12  |B0_12 | 32 | Backside |
+| 3    | 0   |B1_00 | 8  | |
+| 3    | 1   |B1_01 | 7  | |
+| 4    | 4   |EMC_04 | 2  |  |
+| 4    | 5   |EMC_05 | 3  |  |
+| 4    | 7   |EMC_07 | 33  | Backside |
+| 4    | 6   |EMC_06 | 4  |  |
+| 4    | 8   |EMC_08 | 5  |  |
+| 4    | 31  |EMC_31 | 29  | Backside |
+| 4    | 32  |EMC_32 | 28  | Backside |
+| 4    | 36  |EMC_36 | 31  | Backside |
+| 4    | 37  |EMC_37 | 30  | Backside |
 
 ## Button
 On every edge the button pushes a string to a message queue which is then processed by the uart. Pushputton is mapped to teensy pin 23. An external pullup resistor must be used currently.
