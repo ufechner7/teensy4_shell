@@ -127,8 +127,8 @@ The names and pin numbers used by the Teensy documentation, the schematics/datas
 these names:
 | GPIO | PIN | Name    | Teensy PIN | Remark |
 |:----:|:---:|---------|:----------:|--------|
-| 0    | 2   |AD_B0_2  | 1          | TX1 |
-| 0    | 3   |AD_B0_3  | 0          | RX1 |
+| 0    | -   |AD_B0_2  | 1          | TX1 |
+| 0    | -   |AD_B0_3  | 0          | RX1 |
 | 0    | 12  |AD_B0_12 | 24 / A10   | Backside |
 | 0    | 13  |AD_B0_13 | 25 / A11   | Backside |
 | 1    | 0/16   |AD_B1_00 | 19 / A5    | |
@@ -141,13 +141,13 @@ these names:
 | 1    | 9/25   |AD_B1_09 | 23 / A9    | |
 | 1    | 14  |AD_B1_14 | 26 / A12   | Backside |
 | 1    | 15  |AD_B1_15 | 27 / A13   | Backside |
-| 2    | 0   |B0_00 | 10 | |
-| 2    | 1   |B0_01 | 12 | |
-| 2    | 2   |B0_02 | 11 | |
-| 2    | 11  |B0_11 | 9  | |
+| 2    | 0/0   |B0_00 | 10 | CS |
+| 2    | 1/1   |B0_01 | 12 | MISO |
+| 2    | 2/2   |B0_02 | 11 | MOSI |
+| 2    | 11/11  |B0_11 | 9  | |
 | 2    | 12  |B0_12 | 32 | Backside |
-| 3    | 0   |B1_00 | 8  | |
-| 3    | 1   |B1_01 | 7  | |
+| 3    | -   |B1_00 | 8  | TX2 |
+| 3    | -   |B1_01 | 7  | RX2 |
 | 4    | 4   |EMC_04 | 2  |  |
 | 4    | 5   |EMC_05 | 3  |  |
 | 4    | 7   |EMC_07 | 33  | Backside |
