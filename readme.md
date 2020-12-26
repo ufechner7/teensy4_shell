@@ -164,7 +164,7 @@ Summary: Most GPIO pins work, but not those with the label EMC_xx . Possible rea
 
 **Example**
 
-Add the following lines to teensy40.overlay to access Teensy pin 10 under the name toggle_gpio:
+Add the following lines to teensy40.overlay to access Teensy pin 9 under the name toggle_gpio:
 ```   
       toggle_gpio: toggle-gpio {
         gpios = <&gpio2 11 GPIO_ACTIVE_HIGH>;
