@@ -93,7 +93,7 @@ make
 cd /usr/local/bin
 sudo ln -s ~/repos/teensy_loader_cli/teensy_loader_cli
 ```
-3. install 49-teensy.rules in /etc/udev/rules.d (download them from http://www.pjrc.com/teensy/49-teensy.rules ) and reboot
+2. install 49-teensy.rules in /etc/udev/rules.d (download them from http://www.pjrc.com/teensy/49-teensy.rules ) and reboot
 
 ### Program the board
 Connect Teensy 4.0 via USB. It must blink slowly. Press the button.
@@ -134,8 +134,8 @@ these names:
 | 4    | 6   |EMC_06   | 4          |  |OK|
 | 4    | 8   |EMC_08   | 5          |  |OK|
 | 2    | 10  |B0_10    | 6          |  |OK|
-| 2    | 17  |B1_01    | 7          | UART4_RX |
-| 2    | 16  |B1_00    | 8          | UART4_TX |
+| 2    | 17  |B1_01    | 7          | UART4_RX |OK|
+| 2    | 16  |B1_00    | 8          | UART4_TX |OK|
 | 2    | 11  |B0_11    | 9          | |OK|
 | 2    | 0   |B0_00    | 10         | CS |OK|
 | 2    | 2   |B0_02    | 11         | MOSI |OK|
@@ -154,7 +154,7 @@ these names:
 | 1    | 12  |AD_B0_12 | 24 / A10   | Backside |OK|
 | 1    | 13  |AD_B0_13 | 25 / A11   | Backside |
 | 1    | 30  |AD_B1_14 | 26 / A12   | Backside |OK|
-| 1    | 15  |AD_B1_15 | 27 / A13   | Backside |
+| 1    | 31  |AD_B1_15 | 27 / A13   | Backside |
 | 3    | 18  |EMC_32   | 28         | Backside |OK|
 | 4    | 31  |EMC_31   | 29  | Backside ||
 | 3    | 23  |EMC_37   | 30  | Backside |OK|
@@ -181,6 +181,18 @@ On every edge the button pushes a string to a message queue which is then proces
 
 ## UART
 The uart always listens for incoming data and dumps it to the log. It also listens for data in the message queue, which are sent out immediately. Used uart is mapped to teens pins 7/8 (Rx2/TX2 in teensy numbering, lpuart4 in nxp numbering). Rx/Tx shorted externally.
+If pin 7 and 8 are connected and you press the button, you see
+the data that the UART received as follows:
+```
+[00:06:32.588,000] <dbg> but.button_main_f: Button state is now 1
+[00:06:32.590,000] <dbg> uart: Received data:
+                               0a 42 75 74 74 6f 6e 20  73 74 61 74 65 20 69 73 |.Button  state is
+                               20 31 0d                                         | 1.
+[00:06:33.914,000] <dbg> but.button_main_f: Button state is now 0
+[00:06:33.916,000] <dbg> uart: Received data:
+                               0a 42 75 74 74 6f 6e 20  73 74 61 74 65 20 69 73 |.Button  state is
+                               20 30 0d                                         | 0.
+```
 
 ## IDE
 Visual Studio Code works great and has good plugins for syntax highlighting, goto-definition, previewing and more:

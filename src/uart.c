@@ -71,7 +71,7 @@ void uart_main_f()
 	uart_irq_callback_set(uart, uart_fifo_cb);
     uart_irq_rx_enable(uart);
 
-    LOG_INF("Thread started");
+    LOG_INF("UART thread started");
     
     while (true) {
         /* get a data item */
