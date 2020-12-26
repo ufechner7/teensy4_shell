@@ -125,40 +125,42 @@ The led flashes continously to give an visual indication that application is run
 ## GPIO names
 The names and pin numbers used by the Teensy documentation, the schematics/datasheet and by the Zephyr driver are not consistant. Here a table to translate
 these names:
-| GPIO | PIN | Name    | Teensy PIN | Remark |
-|:----:|:---:|---------|:----------:|--------|
-| 0    | -   |AD_B0_2  | 1          | TX1 |
-| 0    | -   |AD_B0_3  | 0          | RX1 |
-| 0    | 12  |AD_B0_12 | 24 / A10   | Backside |
-| 0    | 13  |AD_B0_13 | 25 / A11   | Backside |
-| 1    | 0/16   |AD_B1_00 | 19 / A5    | |
-| 1    | 1/17   |AD_B1_01 | 18 / A4    | |
-| 1    | 2/18   |AD_B1_02 | 14 / A0    | |
-| 1    | 3/19   |AD_B1_03 | 15 / A1    | |
-| 1    | 6/22   |AD_B1_06 | 17 / A3    | |
-| 1    | 7/23   |AD_B1_07 | 16 / A2    | |
-| 1    | 8/24   |AD_B1_08 | 22 / A8    | |
-| 1    | 9/25   |AD_B1_09 | 23 / A9    | |
-| 1    | 14  |AD_B1_14 | 26 / A12   | Backside |
+| GPIO | PIN | Name    | Teensy PIN | Remark |Tested|
+|:----:|:---:|---------|:----------:|--------|:-:|
+| 1    | 2   |AD_B0_2  | 1          | TX1 ||
+| 1    | 3   |AD_B0_3  | 0          | RX1 ||
+| 1    | 12  |AD_B0_12 | 24 / A10   | Backside |OK|
+| 1    | 13  |AD_B0_13 | 25 / A11   | Backside |
 | 1    | 15  |AD_B1_15 | 27 / A13   | Backside |
-| 2    | 0/0   |B0_00 | 10 | CS |
-| 2    | 1/1   |B0_01 | 12 | MISO |
-| 2    | 2/2   |B0_02 | 11 | MOSI |
-| 2    | 11/11  |B0_11 | 9  | |
-| 2    | 12  |B0_12 | 32 | Backside |
-| 3    | -   |B1_00 | 8  | TX2 |
-| 3    | -   |B1_01 | 7  | RX2 |
-| 4    | 4   |EMC_04 | 2  | not working |
-| 4    | 5   |EMC_05 | 3  | not working |
+| 1    | 16  |AD_B1_00 | 19 / A5    | |OK|
+| 1    | 17  |AD_B1_01 | 18 / A4    | |OK|
+| 1    | 18  |AD_B1_02 | 14 / A0    | |OK|
+| 1    | 19  |AD_B1_03 | 15 / A1    | |OK|
+| 1    | 22  |AD_B1_06 | 17 / A3    | |OK|
+| 1    | 23  |AD_B1_07 | 16 / A2    | |OK|
+| 1    | 24  |AD_B1_08 | 22 / A8    | |OK|
+| 1    | 25  |AD_B1_09 | 23 / A9    | |OK|
+| 1    | 30  |AD_B1_14 | 26 / A12   | Backside |OK|
+| 2    | 0   |B0_00 | 10 | CS |OK|
+| 2    | 1   |B0_01 | 12 | MISO |OK|
+| 2    | 2   |B0_02 | 11 | MOSI |OK|
+| 2    | 11  |B0_11 | 9  | |OK|
+| 2    | 12  |B0_12 | 32 | Backside |OK|
+| 3    | 0   |B1_00 | 8  | TX2 |
+| 3    | 1   |B1_01 | 7  | RX2 |
+| 3    | 18  |EMC_32 | 28  | Backside |FAIL|
+| 3    | 22  |EMC_36 | 31  | Backside ||
+| 3    | 23  |EMC_37 | 30  | Backside |FAIL|
+| 4    | 4   |EMC_04 | 2  |  |FAIL|
+| 4    | 5   |EMC_05 | 3  |  |FAIL|
 | 4    | 7   |EMC_07 | 33  | Backside |
-| 4    | 6   |EMC_06 | 4  |  |
-| 4    | 8   |EMC_08 | 5  |  |
-| 4    | 31  |EMC_31 | 29  | Backside |
-| 4    | 32  |EMC_32 | 28  | Backside |
-| 4    | 36  |EMC_36 | 31  | Backside |
-| 4    | 37  |EMC_37 | 30  | Backside |
+| 4    | 6   |EMC_06 | 4  |  |FAIL|
+| 4    | 8   |EMC_08 | 5  |  |FAIL|
+| 4    | 31  |EMC_31 | 29  | Backside ||
 
-If two PIN numbers are given, the second one works, the first one should work, but does not.
+
+Summary: Most GPIO pins work, but not those with the label EMC_xx . Possible reason: They are initialized as SDRAM interface.
+
 
 ## Button
 On every edge the button pushes a string to a message queue which is then processed by the uart. Pushputton is mapped to teensy pin 23. An external pullup resistor must be used currently.
