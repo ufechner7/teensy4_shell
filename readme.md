@@ -127,8 +127,16 @@ The names and pin numbers used by the Teensy documentation, the schematics/datas
 these names:
 | GPIO | PIN | Name    | Teensy PIN | Remark |Tested|
 |:----:|:---:|---------|:----------:|--------|:-:|
-| 1    | 2   |AD_B0_2  | 1          | UART6_TX ||
 | 1    | 3   |AD_B0_3  | 0          | UART6_RX ||
+| 1    | 2   |AD_B0_2  | 1          | UART6_TX ||
+| 4    | 4   |EMC_04   | 2          |  |OK|
+| 4    | 5   |EMC_05   | 3          |  |OK|
+| 4    | 6   |EMC_06   | 4          |  |OK|
+| 4    | 8   |EMC_08   | 5          |  |OK|
+| 2    | 10  |B0_10    | 6          |  |OK|
+| 3    | 1   |B1_01    | 7          | UART4_RX |
+| 3    | 0   |B1_00    | 8          | UART4_TX |
+| 2    | 11  |B0_11    | 9          | |OK|
 | 1    | 12  |AD_B0_12 | 24 / A10   | Backside |OK|
 | 1    | 13  |AD_B0_13 | 25 / A11   | Backside |
 | 1    | 15  |AD_B1_15 | 27 / A13   | Backside |
@@ -144,19 +152,11 @@ these names:
 | 2    | 0   |B0_00 | 10 | CS |OK|
 | 2    | 1   |B0_01 | 12 | MISO |OK|
 | 2    | 2   |B0_02 | 11 | MOSI |OK|
-| 2    | 10  |B0_10    | 6          |  |OK|
-| 2    | 11  |B0_11 | 9  | |OK|
 | 2    | 12  |B0_12 | 32 | Backside |OK|
-| 3    | 0   |B1_00 | 8  | UART4_TX |
-| 3    | 1   |B1_01 | 7  | UART4_RX |
 | 3    | 18  |EMC_32 | 28  | Backside |OK|
 | 3    | 22  |EMC_36 | 31  | Backside ||
 | 3    | 23  |EMC_37 | 30  | Backside |OK|
-| 4    | 4   |EMC_04 | 2  |  |OK|
-| 4    | 5   |EMC_05 | 3  |  |OK|
 | 4    | 7   |EMC_07 | 33  | Backside |
-| 4    | 6   |EMC_06 | 4  |  |OK|
-| 4    | 8   |EMC_08 | 5  |  |OK|
 | 4    | 31  |EMC_31 | 29  | Backside ||
 
 The EMC_XX pins will only work when https://github.com/bdkrae/zephyr/pull/4 is merged.
