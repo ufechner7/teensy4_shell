@@ -14,8 +14,8 @@
     app-gpios {
       compatible = "gpio-keys";
       toggle_gpio: toggle-gpio {
-        gpios = <&gpio4 4 GPIO_ACTIVE_HIGH>;
-        label = "Toggle Pin 2";
+        gpios = <&gpio2 11 GPIO_ACTIVE_HIGH>;
+        label = "Toggle Teensy Pin 9";
       };
       button0: button_0 {
         gpios = < &gpio1 25 GPIO_ACTIVE_LOW >;

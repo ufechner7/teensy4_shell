@@ -129,6 +129,7 @@ these names:
 |:----:|:---:|---------|:----------:|--------|:-:|
 | 1    | 2   |AD_B0_2  | 1          | TX1 ||
 | 1    | 3   |AD_B0_3  | 0          | RX1 ||
+| 1    | 10  |B0_10    | 6          |  ||
 | 1    | 12  |AD_B0_12 | 24 / A10   | Backside |OK|
 | 1    | 13  |AD_B0_13 | 25 / A11   | Backside |
 | 1    | 15  |AD_B1_15 | 27 / A13   | Backside |
@@ -161,6 +162,16 @@ these names:
 
 Summary: Most GPIO pins work, but not those with the label EMC_xx . Possible reason: They are initialized as SDRAM interface.
 
+**Example**
+
+Add the following lines to teensy40.overlay to access Teensy pin 10 under the name toggle_gpio:
+```   
+      toggle_gpio: toggle-gpio {
+        gpios = <&gpio2 11 GPIO_ACTIVE_HIGH>;
+        label = "Toggle Teensy Pin 9";
+      };
+```
+You can find the GPIO number and PIN number in the table above.
 
 ## Button
 On every edge the button pushes a string to a message queue which is then processed by the uart. Pushputton is mapped to teensy pin 23. An external pullup resistor must be used currently.
