@@ -134,30 +134,34 @@ these names:
 | 4    | 6   |EMC_06   | 4          |  |OK|
 | 4    | 8   |EMC_08   | 5          |  |OK|
 | 2    | 10  |B0_10    | 6          |  |OK|
-| 3    | 1   |B1_01    | 7          | UART4_RX |
-| 3    | 0   |B1_00    | 8          | UART4_TX |
+| 2    | 17  |B1_01    | 7          | UART4_RX |
+| 2    | 16  |B1_00    | 8          | UART4_TX |
 | 2    | 11  |B0_11    | 9          | |OK|
-| 1    | 12  |AD_B0_12 | 24 / A10   | Backside |OK|
-| 1    | 13  |AD_B0_13 | 25 / A11   | Backside |
-| 1    | 15  |AD_B1_15 | 27 / A13   | Backside |
-| 1    | 16  |AD_B1_00 | 19 / A5    | |OK|
-| 1    | 17  |AD_B1_01 | 18 / A4    | |OK|
+| 2    | 0   |B0_00    | 10         | CS |OK|
+| 2    | 2   |B0_02    | 11         | MOSI |OK|
+| 2    | 1   |B0_01    | 12         | MISO |OK|
+| 2    | 3   |B0_      | 13         | Onboard LED |OK|
 | 1    | 18  |AD_B1_02 | 14 / A0    | |OK|
 | 1    | 19  |AD_B1_03 | 15 / A1    | |OK|
-| 1    | 22  |AD_B1_06 | 17 / A3    | |OK|
 | 1    | 23  |AD_B1_07 | 16 / A2    | |OK|
+| 1    | 22  |AD_B1_06 | 17 / A3    | |OK|
+| 1    | 17  |AD_B1_01 | 18 / A4    | |OK|
+| 1    | 16  |AD_B1_00 | 19 / A5    | |OK|
+| 1    | 26  |AD_B1_10 | 20 / A6    |UART8_TX ||
+| 1    | 27  |AD_B1_11 | 21 / A7    |UART8_RX ||
 | 1    | 24  |AD_B1_08 | 22 / A8    | |OK|
 | 1    | 25  |AD_B1_09 | 23 / A9    | |OK|
+| 1    | 12  |AD_B0_12 | 24 / A10   | Backside |OK|
+| 1    | 13  |AD_B0_13 | 25 / A11   | Backside |
 | 1    | 30  |AD_B1_14 | 26 / A12   | Backside |OK|
-| 2    | 0   |B0_00 | 10 | CS |OK|
-| 2    | 1   |B0_01 | 12 | MISO |OK|
-| 2    | 2   |B0_02 | 11 | MOSI |OK|
-| 2    | 12  |B0_12 | 32 | Backside |OK|
-| 3    | 18  |EMC_32 | 28  | Backside |OK|
-| 3    | 22  |EMC_36 | 31  | Backside ||
-| 3    | 23  |EMC_37 | 30  | Backside |OK|
-| 4    | 7   |EMC_07 | 33  | Backside |
-| 4    | 31  |EMC_31 | 29  | Backside ||
+| 1    | 15  |AD_B1_15 | 27 / A13   | Backside |
+| 3    | 18  |EMC_32   | 28         | Backside |OK|
+| 4    | 31  |EMC_31   | 29  | Backside ||
+| 3    | 23  |EMC_37   | 30  | Backside |OK|
+| 3    | 22  |EMC_36   | 31  | Backside ||
+| 2    | 12  |B0_12    | 32  | Backside |OK|
+| 4    | 7   |EMC_07   | 33  | Backside |
+
 
 The EMC_XX pins will only work when https://github.com/bdkrae/zephyr/pull/4 is merged.
 
