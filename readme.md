@@ -120,7 +120,7 @@ Standard output is mapped to usb according to [usb/console](https://github.com/z
 Known limitation: In the moment the usb console cannot be used as input device.
 
 ## LED + toggle pin
-The led flashes continously to give an visual indication that application is running. The toggle pin is mapped to teensy pin 2 (Teensy 4.0).
+The led flashes continously to give an visual indication that application is running. The toggle pin is mapped to teensy pin 9 (Teensy 4.0).
 
 ## GPIO names
 The names and pin numbers used by the Teensy documentation, the schematics/datasheet and by the Zephyr driver are not consistant. Here a table to translate
@@ -129,7 +129,6 @@ these names:
 |:----:|:---:|---------|:----------:|--------|:-:|
 | 1    | 2   |AD_B0_2  | 1          | UART6_TX ||
 | 1    | 3   |AD_B0_3  | 0          | UART6_RX ||
-| 1    | 10  |B0_10    | 6          |  ||
 | 1    | 12  |AD_B0_12 | 24 / A10   | Backside |OK|
 | 1    | 13  |AD_B0_13 | 25 / A11   | Backside |
 | 1    | 15  |AD_B1_15 | 27 / A13   | Backside |
@@ -145,6 +144,7 @@ these names:
 | 2    | 0   |B0_00 | 10 | CS |OK|
 | 2    | 1   |B0_01 | 12 | MISO |OK|
 | 2    | 2   |B0_02 | 11 | MOSI |OK|
+| 2    | 10  |B0_10    | 6          |  |OK|
 | 2    | 11  |B0_11 | 9  | |OK|
 | 2    | 12  |B0_12 | 32 | Backside |OK|
 | 3    | 0   |B1_00 | 8  | UART4_TX |
