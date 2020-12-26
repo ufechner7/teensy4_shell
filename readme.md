@@ -127,8 +127,8 @@ The names and pin numbers used by the Teensy documentation, the schematics/datas
 these names:
 | GPIO | PIN | Name    | Teensy PIN | Remark |Tested|
 |:----:|:---:|---------|:----------:|--------|:-:|
-| 1    | 2   |AD_B0_2  | 1          | TX1 ||
-| 1    | 3   |AD_B0_3  | 0          | RX1 ||
+| 1    | 2   |AD_B0_2  | 1          | UART6_TX ||
+| 1    | 3   |AD_B0_3  | 0          | UART6_RX ||
 | 1    | 10  |B0_10    | 6          |  ||
 | 1    | 12  |AD_B0_12 | 24 / A10   | Backside |OK|
 | 1    | 13  |AD_B0_13 | 25 / A11   | Backside |
@@ -147,20 +147,19 @@ these names:
 | 2    | 2   |B0_02 | 11 | MOSI |OK|
 | 2    | 11  |B0_11 | 9  | |OK|
 | 2    | 12  |B0_12 | 32 | Backside |OK|
-| 3    | 0   |B1_00 | 8  | TX2 |
-| 3    | 1   |B1_01 | 7  | RX2 |
-| 3    | 18  |EMC_32 | 28  | Backside |FAIL|
+| 3    | 0   |B1_00 | 8  | UART4_TX |
+| 3    | 1   |B1_01 | 7  | UART4_RX |
+| 3    | 18  |EMC_32 | 28  | Backside |OK|
 | 3    | 22  |EMC_36 | 31  | Backside ||
-| 3    | 23  |EMC_37 | 30  | Backside |FAIL|
-| 4    | 4   |EMC_04 | 2  |  |FAIL|
-| 4    | 5   |EMC_05 | 3  |  |FAIL|
+| 3    | 23  |EMC_37 | 30  | Backside |OK|
+| 4    | 4   |EMC_04 | 2  |  |OK|
+| 4    | 5   |EMC_05 | 3  |  |OK|
 | 4    | 7   |EMC_07 | 33  | Backside |
-| 4    | 6   |EMC_06 | 4  |  |FAIL|
-| 4    | 8   |EMC_08 | 5  |  |FAIL|
+| 4    | 6   |EMC_06 | 4  |  |OK|
+| 4    | 8   |EMC_08 | 5  |  |OK|
 | 4    | 31  |EMC_31 | 29  | Backside ||
 
-
-Summary: Most GPIO pins work, but not those with the label EMC_xx . Possible reason: They are initialized as SDRAM interface.
+The EMC_XX pins will only work when https://github.com/bdkrae/zephyr/pull/4 is merged.
 
 **Example**
 
@@ -178,6 +177,15 @@ On every edge the button pushes a string to a message queue which is then proces
 
 ## UART
 The uart always listens for incoming data and dumps it to the log. It also listens for data in the message queue, which are sent out immediately. Used uart is mapped to teens pins 7/8 (Rx2/TX2 in teensy numbering, lpuart4 in nxp numbering). Rx/Tx shorted externally.
+
+## IDE
+Visual Studio Code works great and has good plugins for syntax highlighting, goto-definition, previewing and more:
+- C/C++
+- Python
+- DeviceTree for Zephyr Project
+- RST Preview
+
+See: https://code.visualstudio.com/download
 
 ## Questions?
 In case you have problems to run the above mentioned examples, please create an issue in this repository.
