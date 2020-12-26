@@ -64,7 +64,7 @@ void pin_main_f()
     while (true) {
         gpio_pin_set(dev, TOGGLE_GPIO_PIN, (int)pin_is_on);
 
-        LOG_INF("PIN state changed: %u", (int)pin_is_on);
+        LOG_DBG("PIN state changed: %u", (int)pin_is_on);
 
         pin_is_on = !pin_is_on;
 
