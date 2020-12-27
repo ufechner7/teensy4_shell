@@ -114,7 +114,7 @@ Available commands:
             Return to the main command tree is done by pressing alt+r.
   shell    :Useful, not Unix-like shell commands.
 
-uart:~$ 
+teensy:~$ 
 ```
 You can use the \<TAB> and \<UP> keys as in Linux for command completion and to scroll through the command histoy. To see sub-commands, type \<SPACE>\<TAB> after the main command.
 
@@ -124,9 +124,9 @@ See also: https://docs.zephyrproject.org/latest/reference/shell/index.html
 
 An important command is "kernel stacks":
 ```
-uart:~$ kernel stacks
+teensy:~$ kernel stacks
 
-uart:~$ kernel stacks
+teensy:~$ kernel stacks
 0x20202830 uart_id    (real size 504):  unused 360      usage 144 / 504 (28 %)
 0x20202630 pin_id     (real size 504):  unused 376      usage 128 / 504 (25 %)
 0x20202530 led_id     (real size 504):  unused 376      usage 128 / 504 (25 %)
@@ -137,7 +137,7 @@ uart:~$ kernel stacks
 0x20202cb0 idle 00    (real size 320):  unused 248      usage 72 / 320 (22 %)
 0x20202db0 main       (real size 928):  unused 656      usage 272 / 928 (29 %)
 0x20206080 IRQ 00     (real size 2144): unused 1488     usage 656 / 2144 (30 %)
-uart:~$
+teensy:~$
 ```
 If you press the button (connect pin 23 to shortly to ground) you will see that the stack usage of the pin_id thread increases significantly. Make sure you have enough stack reserved, e.g. in line 22 of file pin.c . If you do not have enough the program will crash without warning. 
 
