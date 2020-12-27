@@ -67,6 +67,11 @@ the data that the UART received as follows:
 ```
 ## Additional features in enabled in prj.conf
 ### Hardware floating point
+```
+CONFIG_FPU=y
+CONFIG_FPU_SHARING=y
+```
+These two options enable the use of the hardware FPU for single and double float values. The second option saves the FPU registers in case of an interrupt, which increases the time for a switch but enables the use of the FPU from different threads. Don't forget to increase the stack size of your threads when enabling the second option!
 
 ### Posix time
 ```
@@ -79,14 +84,19 @@ These two settings make it possible to use the posix date time api in programs, 
 
 If you type "help" in the console (in putty), you should see the following output:
 ```
-
 uart:~$ help
 Please press the <Tab> button to see all available commands.
 You can also use the <Tab> button to prompt or auto-complete all commands or its subcommands.
 You can try to call commands with <-h> or <--help> parameter for more information.
 
+Shell supports following meta-keys:
+  Ctrl + (a key from: abcdefklnpuw)
+  Alt  + (a key from: bf)
+Please refer to shell documentation for more details.
+
 Available commands:
   clear    :Clear screen.
+  date     :Date commands
   device   :Device commands
   help     :Prints the help message.
   history  :Command history.
@@ -96,10 +106,21 @@ Available commands:
   resize   :Console gets terminal screen size or assumes default in case the
             readout fails. It must be executed after each terminal width change
             to ensure correct text display.
+  select   :Selects new root command. In order for the command to be selected,
+            it must meet the criteria:
+            - it is a static command
+            - it is not preceded by a dynamic command
+            - it accepts arguments
+            Return to the main command tree is done by pressing alt+r.
   shell    :Useful, not Unix-like shell commands.
-uart:~$
+
+uart:~$ 
 ```
 You can use the \<TAB> and \<UP> keys as in Linux for command completion and to scroll through the command histoy. To see sub-commands, type \<SPACE>\<TAB> after the main command.
+
+See also: https://docs.zephyrproject.org/latest/reference/shell/index.html
+
+## Examples for shell commands
 
 An important command is "kernel stacks":
 ```
