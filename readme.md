@@ -80,6 +80,9 @@ CONFIG_DATE_SHELL=y
 ```
 These two settings make it possible to use the posix date time api in programs, but also to set and to read the date and time from the shell.
 
+### Trying out other options
+You can use the command ```west build -t menuconfig``` to launch the menu based configuration tool. The settings will get saved in the file ./build/zephyr/.config , but this is only valid temporarily. To make a change permanent look up the relevant commands either in this file, or in the help message of menuconfig and copy the commands manually to prj.conf.
+
 ## Shell
 
 If you type "help" in the console (in putty), you should see the following output:
