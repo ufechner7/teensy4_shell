@@ -65,6 +65,15 @@ the data that the UART received as follows:
                                0a 42 75 74 74 6f 6e 20  73 74 61 74 65 20 69 73 |.Button  state is
                                20 30 0d                                         | 0.
 ```
+## Additional features in enabled in prj.conf
+### Hardware floating point
+
+### Posix time
+```
+CONFIG_POSIX_CLOCK=y
+CONFIG_DATE_SHELL=y
+```
+These two settings make it possible to use the posix date time api in programs, but also to set and to read the date and time from the shell.
 
 ## Shell
 
@@ -90,7 +99,7 @@ Available commands:
   shell    :Useful, not Unix-like shell commands.
 uart:~$
 ```
-You can use the <TAB> and <UP> keys as in Linux for command completion and to scroll through the command histoy.
+You can use the \<TAB> and \<UP> keys as in Linux for command completion and to scroll through the command histoy. To see sub-commands, type \<SPACE>\<TAB> after the main command.
 
 An important command is "kernel stacks":
 ```
