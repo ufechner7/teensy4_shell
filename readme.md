@@ -84,7 +84,7 @@ These two settings make it possible to use the posix date time api in programs, 
 
 If you type "help" in the console (in putty), you should see the following output:
 ```
-uart:~$ help
+teensy:~$ help
 Please press the <Tab> button to see all available commands.
 You can also use the <Tab> button to prompt or auto-complete all commands or its subcommands.
 You can try to call commands with <-h> or <--help> parameter for more information.
