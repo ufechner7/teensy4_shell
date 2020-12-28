@@ -15,6 +15,8 @@
 
 #include <drivers/gpio.h>
 
+#include "globals.h"
+
 /*** Constants **********************************************************************/
 #define LOG_MODULE_NAME led
 
@@ -64,7 +66,12 @@ void led_main_f()
 
         LOG_DBG("LED state changed: %u", (int)led_is_on);
 
-        led_is_on = !led_is_on;
+        if (blink_stat) {
+            led_is_on = !led_is_on;
+        } else {
+            led_is_on = false;
+        }
+        
 
         k_msleep(TOGGLE_TIME_MS);
     }

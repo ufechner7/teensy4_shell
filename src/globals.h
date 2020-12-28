@@ -11,6 +11,7 @@
 
 #ifndef GLOBALS_H_
 #define GLOBALS_H_
+#include <app_memory/app_memdomain.h>
 
 /*** Constants **********************************************************************/
 
@@ -21,7 +22,6 @@ typedef struct {
 }__attribute__((aligned(4))) data_message_t;
 
 /*** Variables **********************************************************************/
-
-
+extern bool blink_stat; /* true = blinking, false = off */
 
 #endif /* GLOBALS_H_ */
