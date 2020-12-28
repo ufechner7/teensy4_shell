@@ -2,8 +2,8 @@
  * @file main.c
  * @author Bernhard Kraemer, Uwe Fechner
  * @brief Application startup
- * @version 0.2
- * @date 2020-12-24
+ * @version 0.3
+ * @date 2020-12-28
  * 
  * @copyright Copyright (c) 2020
  * 
@@ -17,6 +17,7 @@
 #include <usb/usb_device.h>
 #include <version.h>
 #include <shell/shell.h>
+#include <power/reboot.h>
 
 #include "globals.h"
 
@@ -111,6 +112,19 @@ static int cmd_version(const struct shell *shell, size_t argc, char **argv)
         return 0;
 }
 
+static int cmd_reboot(const struct shell *shell, size_t argc, char **argv)
+{
+	ARG_UNUSED(argc);
+	ARG_UNUSED(argv);
+
+	shell_print(shell, "Rebooting now...");
+	k_msleep(200);
+
+	sys_reboot(SYS_REBOOT_COLD);
+
+	return 0;
+}
+
 /* Creating subcommands (level 1 command) array for command "demo". */
 SHELL_STATIC_SUBCMD_SET_CREATE(sub_demo,
         SHELL_CMD(params, NULL, "Print params command.",
@@ -123,6 +137,9 @@ SHELL_CMD_REGISTER(demo, &sub_demo, "Demo commands", NULL);
 
 /* Creating root (level 0) command "version" */
 SHELL_CMD_REGISTER(version, NULL, "Show kernel version", cmd_version);
+
+/* Creating root (level 0) command "reboot" */
+SHELL_CMD_REGISTER(reboot, NULL, "Reboot the system", cmd_reboot);
 
 /* Creating root (level 0) command "blink" */
 SHELL_CMD_ARG_REGISTER(blink, NULL, "Turn blinking on or off", cmd_blink, 2, 0);
