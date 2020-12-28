@@ -28,3 +28,8 @@
   status = "okay";
   current-speed = < 115200 >;
 };
+
+&lpuart8 {
+  status = "okay";
+  current-speed = < 115200 >;
+};
