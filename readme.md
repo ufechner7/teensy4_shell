@@ -190,7 +190,7 @@ typedef struct {
 ```
 from the button thread to the uart thread.
 
-The message queue is created in uart.c with the statement:
+The message queue is created in uart.c with the statement, where 10 is the number of messages the queue can hold and 4 the alignment in bytes.
 ```C
 K_MSGQ_DEFINE(data_message_q, sizeof(data_message_t), 10, 4);
 ```
