@@ -37,7 +37,7 @@ The script automatically launches the terminal program putty after flashing the 
 [00:00:00.500,000] <inf> pin: Pin thread started
 [00:00:00.500,000] <inf> pin: GPIO_2
 [00:00:00.500,000] <inf> pin: PIN 11
-uart:~$
+teensy:~$
 ```
 
 ## Standard Output
