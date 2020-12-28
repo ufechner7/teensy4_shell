@@ -23,5 +23,6 @@ typedef struct {
 
 /*** Variables **********************************************************************/
 extern bool blink_stat; /* true = blinking, false = off */
+extern const k_tid_t led_id;
 
 #endif /* GLOBALS_H_ */

@@ -16,7 +16,9 @@
 
 #include <usb/usb_device.h>
 #include <version.h>
-#include <shell/shell.h> 
+#include <shell/shell.h>
+
+#include "globals.h"
 
 /*** Constants **********************************************************************/
 #define LOG_MODULE_NAME sys
@@ -87,9 +89,11 @@ static int cmd_blink(const struct shell *shell, size_t argc, char **argv)
 			if (strcmp(argv[1], "on") == 0) {
 				shell_print(shell, "on");
 				blink_stat = true;
+				k_wakeup(led_id);
 			} else if (strcmp(argv[1], "off") == 0) {
 				shell_print(shell, "off");
 				blink_stat = false;
+				k_wakeup(led_id);
 			} else {
 				shell_print(shell, "Unknown parameter, must be 'on' or 'off'");
 			}
