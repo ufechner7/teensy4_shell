@@ -9,7 +9,7 @@ This tutorial was tested on Ubuntu 18.04.
 If you do not have installed Zephyr with support for Teensy 4.0 yet, please follow the instructions at https://github.com/ufechner7/zephyr_teensy4_test .
 
 ### Check out this sample program
-```
+```bash
 cd ~/repos
 https://github.com/ufechner7/teensy4_shell
 cd teensy4_shell/
@@ -146,11 +146,11 @@ If you press the button (connect pin 23 to shortly to ground) you will see that 
 
 ## Defining your own shell commands
 In main.c the top level shell commands demo_params, blink and version are defined. First, you need to include the header:
-```
+```C
 #include <shell/shell.h> 
 ```
 As example the code for defining and registering the command blink:
-```
+```C
 /* Function for the processing the blink command */
 static int cmd_blink(const struct shell *shell, size_t argc, char **argv)
 {
