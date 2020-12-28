@@ -98,8 +98,10 @@ Shell supports following meta-keys:
 Please refer to shell documentation for more details.
 
 Available commands:
+  blink    :Turn blinking on or off
   clear    :Clear screen.
   date     :Date commands
+  demo     :Demo commands
   device   :Device commands
   help     :Prints the help message.
   history  :Command history.
@@ -158,9 +160,11 @@ static int cmd_blink(const struct shell *shell, size_t argc, char **argv)
         if (strcmp(argv[1], "on") == 0) {
             shell_print(shell, "on");
             blink_stat = true;
+            k_wakeup(led_id);
         } else if (strcmp(argv[1], "off") == 0) {
             shell_print(shell, "off");
             blink_stat = false;
+            k_wakeup(led_id);
         } else {
             shell_print(shell, "Unknown parameter, must be 'on' or 'off'");
         }
@@ -171,6 +175,16 @@ static int cmd_blink(const struct shell *shell, size_t argc, char **argv)
 /* Creating root (level 0) command "blink" */
 SHELL_CMD_ARG_REGISTER(blink, NULL, "Turn blinking on or off", cmd_blink, 2, 0);
 ```
+We are using global variables to communicate with the led thread. They are defined as follows:
+```C
+extern bool blink_stat;      /* true = blinking, false = off */
+extern const k_tid_t led_id; /* the id of the led thread */
+```
+The variable blink is initialized at the beginning of main:
+```C
+bool blink_stat = true;
+```
+
 You find more examples in main.c, try them out!
 
 ## Communication between threads
@@ -179,7 +193,7 @@ In this example, two methods of inter-thread communication are used:
 - a message queue
 - global variables 
 
-Normal global variables are only safe if they are written in only one thread (here: the main thread) and of an type that can be read in one cycle. For complex types it is better to use a FIFO or a message queue.
+Normal global variables are only safe if they are written in only one thread (here: the main thread) and of a type that can be written atomically in one cycle. For complex types it is better to use a FIFO or a message queue.
 
 We are sending variables of the following type:
 ```C
