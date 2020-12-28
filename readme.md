@@ -173,6 +173,46 @@ SHELL_CMD_ARG_REGISTER(blink, NULL, "Turn blinking on or off", cmd_blink, 2, 0);
 ```
 You find more examples in main.c, try them out!
 
+## Communication between threads
+
+In this example, two methods of inter-thread communication are used:
+- a message queue
+- global variables 
+
+Normal global variables are only safe if they are written in only one thread (here: the main thread) and of an type that can be read in one cycle. For complex types it is better to use a FIFO or a message queue.
+
+We are sending variables of the following type:
+```C
+typedef struct {
+    uint32_t length;
+    uint8_t data[50];
+}__attribute__((aligned(4))) data_message_t;
+```
+from the button thread to the uart thread.
+
+The message queue is created in uart.c with the statement:
+```C
+K_MSGQ_DEFINE(data_message_q, sizeof(data_message_t), 10, 4);
+```
+To put data into the queue, the following code is used:
+```C
+data_message_t msg;
+memcpy(msg.data, (uint8_t *)s, strlen(s));
+msg.length = strlen(s);
+
+while (k_msgq_put(&data_message_q, &msg, K_NO_WAIT) != 0) {
+    /* message queue is full: purge old data & try again */
+    k_msgq_purge(&data_message_q);
+                LOG_ERR("Data message queue is full -- purge");
+}
+```
+The while loop ensures that in case of an overflow of the queue the old data is deleted and only the newest message is kept. Normally this should never happen.
+
+The uart thread is reading messages from this queue with the statement:
+```C
+k_msgq_get(&data_message_q, &tx_msg, K_FOREVER);
+```
+
 ## Questions?
 In case you have problems to run the above mentioned examples, please create an issue in this repository.
 
