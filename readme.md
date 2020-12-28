@@ -154,18 +154,18 @@ As example the code for defining and registering the command blink:
 /* Function for the processing the blink command */
 static int cmd_blink(const struct shell *shell, size_t argc, char **argv)
 {
-		if (argc == 2) {
-			if (strcmp(argv[1], "on") == 0) {
-				shell_print(shell, "on");
-				blink_stat = true;
-			} else if (strcmp(argv[1], "off") == 0) {
-				shell_print(shell, "off");
-				blink_stat = false;
-			} else {
-				shell_print(shell, "Unknown parameter, must be 'on' or 'off'");
-			}
-		}
-        return 0;
+    if (argc == 2) {
+        if (strcmp(argv[1], "on") == 0) {
+            shell_print(shell, "on");
+            blink_stat = true;
+        } else if (strcmp(argv[1], "off") == 0) {
+            shell_print(shell, "off");
+            blink_stat = false;
+        } else {
+            shell_print(shell, "Unknown parameter, must be 'on' or 'off'");
+        }
+    }
+    return 0;
 }
 
 /* Creating root (level 0) command "blink" */
