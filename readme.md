@@ -144,6 +144,35 @@ teensy:~$
 ```
 If you press the button (connect pin 23 to shortly to ground) you will see that the stack usage of the pin_id thread increases significantly. Make sure you have enough stack reserved, e.g. in line 22 of file pin.c . If you do not have enough the program will crash without warning. 
 
+## Defining your own shell commands
+In main.c the top level shell commands demo_params, blink and version are defined. First, you need to include the header:
+```
+#include <shell/shell.h> 
+```
+As example the code for defining and registering the command blink:
+```
+/* Function for the processing the blink command */
+static int cmd_blink(const struct shell *shell, size_t argc, char **argv)
+{
+		if (argc == 2) {
+			if (strcmp(argv[1], "on") == 0) {
+				shell_print(shell, "on");
+				blink_stat = true;
+			} else if (strcmp(argv[1], "off") == 0) {
+				shell_print(shell, "off");
+				blink_stat = false;
+			} else {
+				shell_print(shell, "Unknown parameter, must be 'on' or 'off'");
+			}
+		}
+        return 0;
+}
+
+/* Creating root (level 0) command "blink" */
+SHELL_CMD_ARG_REGISTER(blink, NULL, "Turn blinking on or off", cmd_blink, 2, 0);
+```
+You find more examples in main.c, try them out!
+
 ## Questions?
 In case you have problems to run the above mentioned examples, please create an issue in this repository.
 

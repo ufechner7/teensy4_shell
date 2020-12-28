@@ -61,8 +61,7 @@ void main(void)
      }
 }
 
-static int cmd_demo_ping(const struct shell *shell, size_t argc,
-                         char **argv)
+static int cmd_demo_ping(const struct shell *shell, size_t argc, char **argv)
 {
         ARG_UNUSED(argc);
         ARG_UNUSED(argv);
@@ -71,8 +70,7 @@ static int cmd_demo_ping(const struct shell *shell, size_t argc,
         return 0;
 }
 
-static int cmd_demo_params(const struct shell *shell, size_t argc,
-                           char **argv)
+static int cmd_demo_params(const struct shell *shell, size_t argc, char **argv)
 {
         int cnt;
 
@@ -83,8 +81,7 @@ static int cmd_demo_params(const struct shell *shell, size_t argc,
         return 0;
 }
 
-static int cmd_blink(const struct shell *shell, size_t argc,
-                           char **argv)
+static int cmd_blink(const struct shell *shell, size_t argc, char **argv)
 {
 		if (argc == 2) {
 			if (strcmp(argv[1], "on") == 0) {
