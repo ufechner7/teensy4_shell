@@ -23,7 +23,7 @@
 #define LOG_MODULE_NAME but
 
 #define START_DELAY     500
-#define STACK_SIZE      500
+#define STACK_SIZE 1000
 #define PRIORITY        5
 
 #define SLEEP_TIME_MS   30
