@@ -226,6 +226,26 @@ The uart thread is reading messages from this queue with the statement:
 ```C
 k_msgq_get(&data_message_q, &tx_msg, K_FOREVER);
 ```
+## Using the shell via a serial port instead of USB
+The following changes are needed:
+
+a. change the line 25 of prj.conf from 
+```
+CONFIG_UART_SHELL_ON_DEV_NAME="CDC_ACM_0"
+```
+to
+```
+CONFIG_UART_SHELL_ON_DEV_NAME="UART_8"
+```
+b. change line 3 of burn.sh from 
+```
+putty -serial /dev/ttyACM0 &
+```
+to
+```
+putty -serial /dev/ttyUSB0 &
+```
+and connect a 3.3V serial adapter to pin 21 (RX) and pin 20 (TX) of the Teensy 2.0.
 
 ## Questions?
 In case you have problems to run the above mentioned examples, please create an issue in this repository.
