@@ -3,9 +3,9 @@ Teensy 4.0 and 4.1 are very small and powerfull boards, in particular useful for
 - hard real time
 - secure network stack, IP6 capable
 - secure remote updates
-- CAN open support
+- [CANopen](https://docs.zephyrproject.org/latest/samples/subsys/canbus/canopen/README.html) support
 
-Zephyr gives you all these features, AND your code easily portable to other MCUs and boards. Finally you can easily disable all unused software components, which makes your application smaller, more secure and easier to maintain.
+[Zephyr](https://docs.zephyrproject.org/latest/introduction/index.html) gives you all these features, AND your code easily portable to other MCUs and boards. Finally you can easily disable all unused software components, which makes your application smaller, more secure and easier to maintain.
 
 # Zephyr on Teensy 4.0
 
