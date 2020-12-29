@@ -41,7 +41,14 @@ teensy:~$
 ```
 
 ## Standard Output
-Standard output is mapped to usb according to [usb/console](https://github.com/zephyrproject-rtos/zephyr/tree/master/samples/subsys/usb/console) example. This is done in ```main.c```. As described there the board will be detected as a CDC_ACM serial device. 
+Standard output is mapped either to CDC_ACM_0, which is USB-serial, or to 
+UART_6 which is present on pin 0 (RX) and pin 1 (TX), depending on line
+27 in prj.conf. Example:
+```
+CONFIG_UART_SHELL_ON_DEV_NAME="CDC_ACM_0" # or UART_6
+```
+USB-serial appears on Linux under the name /dev/ttyACM0 .
+It can be used with the printk() function even before logging and shell are available.
 
 ## LED + toggle pin
 The led flashes continously to give an visual indication that application is running. The toggle pin is mapped to teensy pin 9 (Teensy 4.0).
@@ -52,7 +59,7 @@ The led flashes continously to give an visual indication that application is run
 On every edge the button pushes a string to a message queue which is then processed by the uart. Pushputton is mapped to teensy pin 23. An external pullup resistor must be used currently.
 
 ## UART
-The uart always listens for incoming data and dumps it to the log. It also listens for data in the message queue, which are sent out immediately. Used uart is mapped to teens pins 7/8 (Rx2/TX2 in teensy numbering, lpuart4 in nxp numbering). Rx/Tx shorted externally.
+The uart **lpuart4** always listens for incoming data and dumps it to the log. It also listens for data in the message queue, which are sent out immediately. Used uart is mapped to teens pins 7/8 (Rx2/TX2 in teensy numbering, lpuart4 in nxp numbering). Rx/Tx shorted externally.
 If pin 7 and 8 are connected and you press the button, you see
 the data that the UART received as follows:
 ```
@@ -65,6 +72,8 @@ the data that the UART received as follows:
                                0a 42 75 74 74 6f 6e 20  73 74 61 74 65 20 69 73 |.Button  state is
                                20 30 0d                                         | 0.
 ```
+Be careful: The in prj.conf instead of **lpuartX** the name **UART_X** must be used, with X one of the numbers 1 to 6. Every UART that you want to use must be enabled in the device tree (teensy40.overlay) or disabled, if the pins shall be used for something else.
+
 ## Additional features in enabled in prj.conf
 ### Hardware floating point
 ```
