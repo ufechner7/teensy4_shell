@@ -1,9 +1,18 @@
+# Motivation
+Teensy 4.0 and 4.1 are very small and powerfull boards, in particular useful for control purposes and IoT. The default software stack (Arduino compatible) is easy to use for beginners, but it is missing important features, like:
+- hard real time
+- secure network stack, IP6 capable
+- secure remote updates
+- CAN open support
+
+Zephyr gives you all these features, AND your code easily portable to other MCUs and boards. Finally you can easily disable all unused software components, which makes your application smaller, more secure and easier to maintain.
+
 # Zephyr on Teensy 4.0
 
 This is a demo application using the shell of Zephyr RTOS on Teensy 4.0 hardware. This is the second part of a series of Tutorials. 
 
 ## Preparation
-This tutorial was tested on Ubuntu 18.04.
+This tutorial was tested on Ubuntu 18.04, but should also work on Windows and MAC with some adaptations.
 
 ### Install Zephyr 2.4 at the default location
 If you do not have installed Zephyr with support for Teensy 4.0 yet, please follow the instructions at https://github.com/ufechner7/zephyr_teensy4_test .
