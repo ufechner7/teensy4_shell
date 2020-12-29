@@ -53,10 +53,8 @@ It can be used with the printk() function even before logging and shell are avai
 ## LED + toggle pin
 The led flashes continously to give an visual indication that application is running. The toggle pin is mapped to teensy pin 9 (Teensy 4.0).
 
-**Example**
-
 ## Button
-On every edge the button pushes a string to a message queue which is then processed by the uart. Pushputton is mapped to teensy pin 23. An external pullup resistor must be used currently.
+On every edge the button pushes a string to a message queue which is then processed by the uart. The push button must be connected to teensy pin 23. An external pullup resistor is currently required.
 
 ## UART
 The uart **lpuart4** always listens for incoming data and dumps it to the log. It also listens for data in the message queue, which are sent out immediately. Used uart is mapped to teens pins 7/8 (Rx2/TX2 in teensy numbering, lpuart4 in nxp numbering). Rx/Tx shorted externally.
