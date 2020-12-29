@@ -7,7 +7,7 @@ Teensy 4.0 and 4.1 are very small and powerfull boards, in particular useful for
 
 [Zephyr](https://docs.zephyrproject.org/latest/introduction/index.html) gives you all these features, AND your code easily portable to other MCUs and boards. Finally you can easily disable all unused software components, which makes your application smaller, more secure and easier to maintain.
 
-![Teensy 4.0](./doc/teensy.png)
+<p align="center"><img src="./doc/teensy.png" /></p>
 
 # Zephyr on Teensy 4.0
 
