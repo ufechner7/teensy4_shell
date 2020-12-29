@@ -70,7 +70,7 @@ the data that the UART received as follows:
                                0a 42 75 74 74 6f 6e 20  73 74 61 74 65 20 69 73 |.Button  state is
                                20 30 0d                                         | 0.
 ```
-Be careful: The in prj.conf instead of **lpuartX** the name **UART_X** must be used, with X one of the numbers 1 to 7. Every UART that you want to use must be enabled in the device tree (teensy40.overlay) or disabled, if the pins shall be used for something else.
+Be careful: In prj.conf instead of **lpuartX** the name **UART_X** must be used, with X one of the numbers 1 to 7. Every UART that you want to use must be enabled in the device tree (teensy40.overlay) or disabled, if the pins shall be used for something else.
 
 ## Additional features in enabled in prj.conf
 ### Hardware floating point
