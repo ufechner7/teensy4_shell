@@ -98,7 +98,7 @@ static void uart_fifo_cb(const struct device *dev, void *user_data)
             tx_done=true;
             tx_data_idx=0;
         }
-	}
+    }
 
     if (uart_irq_rx_ready(dev)) {
         uart_fifo_read(dev, &rx_msg.data[rx_msg.length++], 1);
