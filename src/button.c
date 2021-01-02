@@ -1,6 +1,6 @@
 /**
  * @file button.c
- * @author Bernhard Kraemer
+ * @author Bernhard Kraemer, Uwe Fechner
  * @brief Catch a debounced pushbutton state.
  * @version 0.1
  * @date 2020-11-16

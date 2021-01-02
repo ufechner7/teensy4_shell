@@ -1,6 +1,6 @@
 /**
  * @file uart.c
- * @author Bernhard Kraemer
+ * @author Bernhard Kraemer, Uwe Fechner
  * @brief Uart mirror with message queue.
  * @version 0.1
  * @date 2020-11-16
