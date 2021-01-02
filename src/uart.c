@@ -2,8 +2,8 @@
  * @file uart.c
  * @author Bernhard Kraemer, Uwe Fechner
  * @brief Uart mirror with message queue.
- * @version 0.1
- * @date 2020-11-16
+ * @version 0.2
+ * @date 2021-01-02
  * 
  * @copyright Copyright (c) 2020
  * 
@@ -68,7 +68,7 @@ void uart_main_f()
     //     return;
     // }
 
-	uart_irq_callback_set(uart, uart_fifo_cb);
+    uart_irq_callback_set(uart, uart_fifo_cb);
     uart_irq_rx_enable(uart);
 
     LOG_INF("UART thread started");
@@ -86,26 +86,26 @@ void uart_main_f()
 static void uart_fifo_cb(const struct device *dev, void *user_data)
 {
     static data_message_t rx_msg;
-	static int tx_data_idx;
+    static int tx_data_idx;
 
-	uart_irq_update(dev);
+    uart_irq_update(dev);
 
-	if (uart_irq_tx_ready(dev) && tx_data_idx < tx_msg.length) {
-		uart_fifo_fill(dev, &tx_msg.data[tx_data_idx++], 1);
+    if (uart_irq_tx_ready(dev) && tx_data_idx < tx_msg.length) {
+        uart_fifo_fill(dev, &tx_msg.data[tx_data_idx++], 1);
 
-		if (tx_data_idx == tx_msg.length) {
-			uart_irq_tx_disable(dev);
+        if (tx_data_idx == tx_msg.length) {
+            uart_irq_tx_disable(dev);
             tx_done=true;
             tx_data_idx=0;
-		}
+        }
 	}
 
-	if (uart_irq_rx_ready(dev)) {
-		uart_fifo_read(dev, &rx_msg.data[rx_msg.length++], 1);
+    if (uart_irq_rx_ready(dev)) {
+        uart_fifo_read(dev, &rx_msg.data[rx_msg.length++], 1);
 
-		if ((rx_msg.data[rx_msg.length] == '\n') || (rx_msg.data[rx_msg.length - 1] == '\r')) {
+        if ((rx_msg.data[rx_msg.length] == '\n') || (rx_msg.data[rx_msg.length - 1] == '\r')) {
             LOG_HEXDUMP_DBG((const uint8_t *)&rx_msg.data, rx_msg.length, "Received data:");
-			rx_msg.length=0;
-		}
-	}
+            rx_msg.length=0;
+        }
+    }
 }

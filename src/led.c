@@ -1,9 +1,9 @@
 /**
  * @file led.c
- * @author Bernhard Kraemer
+ * @author Bernhard Kraemer, Uwe Fechner
  * @brief Toggle board led periodically.
- * @version 0.1
- * @date 2020-11-15
+ * @version 0.2
+ * @date 2021-01-02
  * 
  * @copyright Copyright (c) 2020
  * 
