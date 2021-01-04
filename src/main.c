@@ -39,96 +39,95 @@ LOG_MODULE_REGISTER(LOG_MODULE_NAME, LOG_LEVEL_DBG);
 
 void main(void)
 {
-	const struct device *usb;
-	uint32_t version = sys_kernel_version_get();
+    const struct device *usb;
+    uint32_t version = sys_kernel_version_get();
 
-	usb = device_get_binding(CONFIG_UART_CONSOLE_ON_DEV_NAME);
-	if (usb == NULL) {
-		return;
-	}
+    usb = device_get_binding(CONFIG_UART_CONSOLE_ON_DEV_NAME);
+    if (usb == NULL) {
+        return;
+    }
 
-	log_init();
-	if (usb_enable(NULL)) {
-		return;
-	}
+    log_init();
+    if (usb_enable(NULL)) {
+        return;
+    }
 
-	// sleep some time after boot to give USB-Client a chance to connect before first log output is produced
-	k_msleep(START_DELAY);
-	LOG_INF("Started zephyr %u.%u.%u on board %s.", SYS_KERNEL_VER_MAJOR(version), SYS_KERNEL_VER_MINOR(version), SYS_KERNEL_VER_PATCHLEVEL(version), CONFIG_BOARD);
+    // sleep some time after boot to give USB-Client a chance to connect before first log output is produced
+    k_msleep(START_DELAY);
+    LOG_INF("Started zephyr %u.%u.%u on board %s.", SYS_KERNEL_VER_MAJOR(version), SYS_KERNEL_VER_MINOR(version), SYS_KERNEL_VER_PATCHLEVEL(version), CONFIG_BOARD);
 
     // this loop is needed to define how often log messages are processed
-	while (true) {
+    while (true) {
         if (log_process(false) == false) {
             k_msleep(30);   /* sleep 30 ms*/
         }
-     }
+    }
 }
 
 static int cmd_demo_ping(const struct shell *shell, size_t argc, char **argv)
 {
-        ARG_UNUSED(argc);
-        ARG_UNUSED(argv);
+    ARG_UNUSED(argc);
+    ARG_UNUSED(argv);
 
-        shell_print(shell, "pong");
-        return 0;
+    shell_print(shell, "pong");
+    return 0;
 }
 
 static int cmd_demo_params(const struct shell *shell, size_t argc, char **argv)
 {
-        int cnt;
+    int cnt;
 
-        shell_print(shell, "argc = %d", argc);
-        for (cnt = 0; cnt < argc; cnt++) {
-                shell_print(shell, "  argv[%d] = %s", cnt, argv[cnt]);
-        }
-        return 0;
+    shell_print(shell, "argc = %d", argc);
+    for (cnt = 0; cnt < argc; cnt++) {
+        shell_print(shell, "  argv[%d] = %s", cnt, argv[cnt]);
+    }
+    return 0;
 }
 
 static int cmd_blink(const struct shell *shell, size_t argc, char **argv)
 {
-		if (argc == 2) {
-			if (strcmp(argv[1], "on") == 0) {
-				shell_print(shell, "on");
-				blink_stat = true;
-				k_wakeup(led_id);
-			} else if (strcmp(argv[1], "off") == 0) {
-				shell_print(shell, "off");
-				blink_stat = false;
-				k_wakeup(led_id);
-			} else {
-				shell_print(shell, "Unknown parameter, must be 'on' or 'off'");
-			}
-		}
-        return 0;
+    if (argc == 2) {
+        if (strcmp(argv[1], "on") == 0) {
+            shell_print(shell, "on");
+            blink_stat = true;
+            k_wakeup(led_id);
+        } else if (strcmp(argv[1], "off") == 0) {
+            shell_print(shell, "off");
+            blink_stat = false;
+            k_wakeup(led_id);
+        } else {
+            shell_print(shell, "Unknown parameter, must be 'on' or 'off'");
+        }
+    }
+    return 0;
 }
 
 static int cmd_version(const struct shell *shell, size_t argc, char **argv)
 {
-        ARG_UNUSED(argc);
-        ARG_UNUSED(argv);
+    ARG_UNUSED(argc);
+    ARG_UNUSED(argv);
 
-        shell_print(shell, "Zephyr version %s", KERNEL_VERSION_STRING);
+    shell_print(shell, "Zephyr version %s", KERNEL_VERSION_STRING);
 
-        return 0;
+    return 0;
 }
 
 static int cmd_reboot(const struct shell *shell, size_t argc, char **argv)
 {
-	ARG_UNUSED(argc);
-	ARG_UNUSED(argv);
+    ARG_UNUSED(argc);
+    ARG_UNUSED(argv);
 
-	shell_print(shell, "Rebooting now...");
-	k_msleep(200);
+    shell_print(shell, "Rebooting now...");
+    k_msleep(200);
 
-	sys_reboot(SYS_REBOOT_COLD);
+    sys_reboot(SYS_REBOOT_COLD);
 
-	return 0;
+    return 0;
 }
 
 /* Creating subcommands (level 1 command) array for command "demo". */
 SHELL_STATIC_SUBCMD_SET_CREATE(sub_demo,
-        SHELL_CMD(params, NULL, "Print params command.",
-                                               cmd_demo_params),
+        SHELL_CMD(params, NULL, "Print params command.", cmd_demo_params),
         SHELL_CMD(ping,   NULL, "Ping command.", cmd_demo_ping),
         SHELL_SUBCMD_SET_END
 );
