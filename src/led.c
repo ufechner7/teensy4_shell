@@ -74,10 +74,8 @@ void led_main_f()
 
         /* make sure that the LED immediately turns on when the command
            "blink on" is executed */
-        if (k_msleep(TOGGLE_TIME_MS))
-        {
-            if (blink_stat)
-            {
+        if (k_msleep(TOGGLE_TIME_MS)) {
+            if (blink_stat) {
                 led_is_on = true;
             }
         };
